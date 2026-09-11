@@ -1,5 +1,5 @@
 plugins {
-	id 'net.fabricmc.fabric-loom' version '1.15.+'
+	id 'net.fabricmc.fabric-loom' version '1.16.+'
 	id 'maven-publish'
 	id "com.modrinth.minotaur" version "2.+"
 }
@@ -37,7 +37,7 @@ dependencies {
 			"common:common-io",
 			"common:common-image",
 	].forEach {
-		implementation include("com.twelvemonkeys.${it}:3.13.1")
+		implementation include("com.twelvemonkeys.${it}:3.15.0")
 	}
 }
 
