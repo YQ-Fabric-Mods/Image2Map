@@ -70,7 +70,7 @@ public abstract class ServerGamePacketListenerImplMixin extends ServerCommonPack
     private void image2map$onCustomSuggestion(ServerboundCommandSuggestionPacket packet, CallbackInfo ci) {
         if (this.player.containerMenu instanceof AbstractWrapperMenu handler && handler.getBackingGui() instanceof MapGui computerGui) {
             this.server.execute(() -> {
-                computerGui.onCommandSuggestion(packet.id(), packet.command());
+                computerGui.onCommandSuggestion(packet.getId(), packet.getCommand());
             });
             ci.cancel();
         }

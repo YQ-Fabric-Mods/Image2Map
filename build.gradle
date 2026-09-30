@@ -1,5 +1,5 @@
 plugins {
-	id 'net.fabricmc.fabric-loom' version '1.16.+'
+	id 'net.fabricmc.fabric-loom' version '1.15.+'
 	id 'maven-publish'
 	id "com.modrinth.minotaur" version "2.+"
 }
@@ -37,7 +37,7 @@ dependencies {
 			"common:common-io",
 			"common:common-image",
 	].forEach {
-		implementation include("com.twelvemonkeys.${it}:3.15.0")
+		implementation include("com.twelvemonkeys.${it}:3.13.1")
 	}
 }
 
@@ -50,16 +50,6 @@ loom {
 		}
 	}
 	accessWidenerPath = file("src/main/resources/image2map.accesswidener")
-}
-
-// Minecraft 26.3 no longer ships TinyFD. Bundle just its bindings and native libraries;
-// Minecraft provides the matching LWJGL core. Server code never loads these classes.
-dependencies {
-	clientImplementation include("org.lwjgl:lwjgl-tinyfd:3.4.3") { transitive = false }
-	['natives-windows', 'natives-windows-arm64', 'natives-linux', 'natives-linux-arm64',
-	 'natives-macos', 'natives-macos-arm64'].each { platform ->
-		clientRuntimeOnly include("org.lwjgl:lwjgl-tinyfd:3.4.3:${platform}") { transitive = false }
-	}
 }
 
 processResources {
